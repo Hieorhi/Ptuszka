@@ -3,9 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Ptuška</title>
+    <meta name="description" content="Prostaja hulnia">
+    <meta name="keywords" content="ptuška, ptuszka, птушка">
+    <meta name="author" content="Hieorhi">
+    
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/favicon.png">
+    
+    <meta property="og:title" content="Ptuška">
+    <meta property="og:description" content="Prostaja hulnia">
+    
     <style>
         body {
             margin: 0;
@@ -105,16 +114,16 @@
         // Функция проверки столкновений
         function checkCollision() {
             // Проверка на выход за границы экрана
-            if (bird.y + bird.height > canvas.height || bird.y < 0) {
+            if (bird.y + bird.height >= canvas.height || bird.y < 0) {
                 return true;
             }
             
             // Проверка столкновения с трубами
             for (let pipe of pipes) {
                 // Проверяем, находится ли птичка в зоне трубы по горизонтали
-                if (bird.x + bird.width > pipe.x && bird.x < pipe.x + PIPE_WIDTH) {
+                if (bird.x + bird.width >= pipe.x && bird.x <= pipe.x + PIPE_WIDTH) {
                     // Проверяем, находится ли птичка вне промежутка между трубами
-                    if (bird.y < pipe.gapY || bird.y + bird.height > pipe.gapY + PIPE_GAP) {
+                    if (bird.y <= pipe.gapY || bird.y + bird.height >= pipe.gapY + PIPE_GAP) {
                         return true;
                     }
                 }
